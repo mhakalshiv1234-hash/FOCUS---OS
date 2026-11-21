@@ -1,0 +1,8 @@
+{
+  "name": "Remix FOCUS//OS",
+  "description": "Personal digital discipline command center and Android Kotlin/Jetpack Compose project foundation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

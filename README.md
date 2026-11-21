@@ -1,31 +1,20 @@
-unzip -o remix-*.zip -x '.aistudio/*' && rm remix-*.zip
-mkdir -p .github/workflows
-cat > .github/workflows/build-apk.yml <<'EOF'
-name: Build APK
-on:
-  push:
-  workflow_dispatch:
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 17
-      - uses: android-actions/setup-android@v3
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.9
-      - name: Build debug APK
-        working-directory: android
-        run: gradle assembleDebug --stacktrace
-      - uses: actions/upload-artifact@v4
-        with:
-          name: focus-os-debug-apk
-          path: android/app/build/outputs/apk/debug/*.apk
-EOF
-git add -A
-git commit -m "add project and build workflow"
-git push
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
+
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/f0b57aa3-8414-4808-a4b5-4dc4fd4ee8c2
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

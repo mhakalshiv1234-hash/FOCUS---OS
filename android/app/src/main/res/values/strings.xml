@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FOCUS//OS</string>
+    <string name="accessibility_service_description">Detects foreground distracting app launches during active FOCUS//OS sessions so restricted apps can be blocked immediately. Does not read screen text or keystrokes.</string>
+</resources>

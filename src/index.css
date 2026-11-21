@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #0c0f14;
+    color: #f1f5f9;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.nda-tactical-grid {
+  background-image:
+    linear-gradient(to right, rgba(212, 173, 90, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 173, 90, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.terminal-tactical-grid {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 102, 0.05) 0px,
+      rgba(0, 255, 102, 0.05) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    linear-gradient(to right, rgba(0, 255, 102, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 102, 0.11) 1px, transparent 1px);
+  background-size: 100% 3px, 40px 40px, 40px 40px;
+}
+
+/* ============================================================================
+ * High-Contrast Terminal Theme Overrides (html[data-theme="terminal"])
+ * Pitch-black #000000 ground, CRT phosphor #00FF66 & amber #FFB000 accents,
+ * crisp 1px green hairlines, sharp 2px geometry, and monospace typography.
+ * ============================================================================ */
+
+html[data-theme="terminal"],
+html[data-theme="terminal"] body {
+  --font-display: "JetBrains Mono", monospace;
+  --font-sans: "JetBrains Mono", monospace;
+  background-color: #000000;
+  color: #ecfff2;
+  font-family: "JetBrains Mono", monospace;
+}
+
+html[data-theme="terminal"] ::selection {
+  background-color: #00ff66;
+  color: #000000;
+}
+
+/* Sharp terminal corners */
+html[data-theme="terminal"] .rounded-xl,
+html[data-theme="terminal"] .rounded-lg,
+html[data-theme="terminal"] .rounded-md {
+  border-radius: 2px;
+}
+
+/* High-contrast pitch-black surfaces */
+html[data-theme="terminal"] [class*="bg-[#0C0F14]"],
+html[data-theme="terminal"] [class*="bg-[#0E121A]"],
+html[data-theme="terminal"] [class*="bg-[#0F131B]"],
+html[data-theme="terminal"] [class*="bg-[#141923]"],
+html[data-theme="terminal"] [class*="bg-[#181F2C]"],
+html[data-theme="terminal"] [class*="bg-[#0B0E0D]"],
+html[data-theme="terminal"] [class*="bg-[#0D0F14]"],
+html[data-theme="terminal"] [class*="bg-[#12151D]"],
+html[data-theme="terminal"] [class*="bg-[#131917]"],
+html[data-theme="terminal"] [class*="bg-[#171A24]"],
+html[data-theme="terminal"] [class*="bg-[#111614]"] {
+  background-color: #020904;
+}
+
+/* Crisp phosphor green hairline borders & dividers */
+html[data-theme="terminal"] [class*="border-[#232B3A]"],
+html[data-theme="terminal"] [class*="border-[#1E2534]"],
+html[data-theme="terminal"] [class*="border-[#2A3346]"],
+html[data-theme="terminal"] [class*="border-[#222926]"],
+html[data-theme="terminal"] [class*="border-[#1D2421]"],
+html[data-theme="terminal"] [class*="border-[#1C2320]"],
+html[data-theme="terminal"] [class*="border-[#232734]"],
+html[data-theme="terminal"] [class*="border-[#2A2F3D]"],
+html[data-theme="terminal"] [class*="border-[#181B24]"],
+html[data-theme="terminal"] [class*="border-[#1E222E]"] {
+  border-color: #1f7a44;
+}
+
+html[data-theme="terminal"] [class*="divide-[#1E2534]"] > :not(:last-child),
+html[data-theme="terminal"] [class*="divide-[#1C2320]"] > :not(:last-child),
+html[data-theme="terminal"] [class*="divide-[#1A1E29]"] > :not(:last-child) {
+  border-color: #1b663a;
+}
+
+/* Track backgrounds */
+html[data-theme="terminal"] [class*="bg-[#232B3A]"],
+html[data-theme="terminal"] [class*="bg-[#1C2320]"] {
+  background-color: #0c2e19;
+}
+
+/* Primary interactive actions: phosphor green fill with pitch-dark text (>13:1 contrast) */
+html[data-theme="terminal"] button.bg-rose-700,
+html[data-theme="terminal"] button.bg-rose-600,
+html[data-theme="terminal"] button.bg-red-700,
+html[data-theme="terminal"] button.bg-red-600,
+html[data-theme="terminal"] a.bg-rose-700,
+html[data-theme="terminal"] a.bg-red-700,
+html[data-theme="terminal"] span.bg-rose-700,
+html[data-theme="terminal"] span.bg-red-700 {
+  background-color: #00ff66;
+  color: #011408;
+  border-color: #00ff66;
+}
+
+html[data-theme="terminal"] button.bg-rose-700:hover:not(:disabled),
+html[data-theme="terminal"] button.bg-rose-600:hover:not(:disabled),
+html[data-theme="terminal"] button.bg-red-700:hover:not(:disabled),
+html[data-theme="terminal"] button.bg-red-600:hover:not(:disabled) {
+  background-color: #4dff94;
+}
+
+html[data-theme="terminal"] div.bg-rose-600,
+html[data-theme="terminal"] div.bg-rose-700,
+html[data-theme="terminal"] div[class*="bg-rose-600"],
+html[data-theme="terminal"] div.bg-red-600,
+html[data-theme="terminal"] div.bg-red-700 {
+  background-color: #00ff66;
+}
+
+/* Secondary active indicators & borders */
+html[data-theme="terminal"] [class~="border-rose-500"],
+html[data-theme="terminal"] [class~="border-rose-500/70"],
+html[data-theme="terminal"] [class~="border-rose-500/60"],
+html[data-theme="terminal"] [class~="border-rose-500/50"],
+html[data-theme="terminal"] [class~="border-rose-500/40"],
+html[data-theme="terminal"] [class~="border-rose-600"],
+html[data-theme="terminal"] [class~="border-rose-600/70"],
+html[data-theme="terminal"] [class~="border-rose-700"],
+html[data-theme="terminal"] .border-red-600,
+html[data-theme="terminal"] .border-red-700,
+html[data-theme="terminal"] [class~="border-red-800/50"],
+html[data-theme="terminal"] [class~="border-red-700/70"] {
+  border-color: #00ff66;
+}
+
+html[data-theme="terminal"] [class*="bg-rose-950"],
+html[data-theme="terminal"] [class*="bg-red-950"] {
+  background-color: #042411;
+}
+
+html[data-theme="terminal"] .text-rose-500,
+html[data-theme="terminal"] .text-rose-400,
+html[data-theme="terminal"] .text-red-500,
+html[data-theme="terminal"] .text-red-400,
+html[data-theme="terminal"] .text-emerald-400,
+html[data-theme="terminal"] .text-emerald-500 {
+  color: #00ff66;
+}
+
+/* Secondary amber tactical accents */
+html[data-theme="terminal"] [class*="text-[#D4AD5A]"],
+html[data-theme="terminal"] [class*="text-[#C59B43]"] {
+  color: #ffb000;
+}
+
+html[data-theme="terminal"] [class*="border-[#D4AD5A]"],
+html[data-theme="terminal"] [class*="border-[#C59B43]"] {
+  border-color: #ffb000;
+}
+
+/* Elevated contrast foreground text tokens */
+html[data-theme="terminal"] .text-slate-50,
+html[data-theme="terminal"] .text-slate-100 {
+  color: #f2fff6;
+}
+
+html[data-theme="terminal"] .text-slate-200,
+html[data-theme="terminal"] .text-slate-300 {
+  color: #c8fce0;
+}
+
+html[data-theme="terminal"] .text-slate-400 {
+  color: #8eeeb4;
+}
+
+html[data-theme="terminal"] .text-slate-500 {
+  color: #66d994;
+}
