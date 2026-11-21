@@ -41,7 +41,7 @@ class AnalyticsViewModel(
         viewModelScope.launch {
          val app = blocklistRepository.observeAppsWithBlockState().first().second
             .firstOrNull{it.packageName == packagename} ?:return@launch
-            blocklistRepositary.setAppBlocked(app,block)
+            blocklistRepositary.setAppBlocked(app, block)
         }
     }
 
