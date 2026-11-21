@@ -36,7 +36,7 @@ object AppSelectionFilter {
         "duolingo", "quizlet", "classroom", "acrobat", "calendar", "keep"
     )
 
-    fun isProtectedSafetyPackage(packageName: String = "com.focusos.app"): Boolean {
+    fun isProtectedSafetyPackage(packageName: String,selfPackageName:String = "com.focusos.app"): Boolean {
         if (packageName == selfPackageName) return true
         val lower = packageName.lowercase()
         return protectedPrefixes.any { lower == it || lower.startsWith("$it.") }
