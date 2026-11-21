@@ -35,9 +35,9 @@ class AnalyticsViewModel(
         }
     }
 
-    fun toggleBlockPackage(packageName: String, appName: InstalledAppInfo, block: Boolean) {
+    fun toggleBlockPackage(app: InstalledAppInfo, block: Boolean) {
         viewModelScope.launch {
-            blocklistRepository.setAppBlocked(packageName, appName, category, block)
+            blocklistRepository.setAppBlocked(app,block)
         }
     }
 
