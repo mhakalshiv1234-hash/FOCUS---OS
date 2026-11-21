@@ -62,7 +62,6 @@ class AppSelectionViewModel(
         tickerFlow,
         errorMessage
     ) { values ->
-        @Suppress("UNCHECKED_CAST")
         val (isLoaded, allApps) = values[0] as Pair<Boolean, List<InstalledAppInfo>>
         val query = values[1] as String
         val category = values[2] as AppCategory?
