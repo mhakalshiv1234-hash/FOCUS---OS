@@ -47,7 +47,7 @@ class MissionsViewModel(
     val uiState: StateFlow<MissionsUiState> = combine(
         missionScheduleRepository.observeMissions(),
         missionScheduleRepository.observeSchedules(),
-        appBlocklistRepository.observeAppsWithBlockState,
+        appBlocklistRepository.observeInstalledApps(),
         focusSessionRepository.observeActiveSession(),
         statusNotice
     ) { missions, schedules, apps, session, notice ->
