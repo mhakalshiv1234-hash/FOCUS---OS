@@ -37,10 +37,10 @@ class AnalyticsViewModel(
         }
     }
 
-    fun toggleBlockPackage(packageName:String,appName:String,category;AppCategory, block: Boolean) {
+    fun toggleBlockPackage(packageName:String,appName:String,category:AppCategory, block: Boolean) {
         viewModelScope.launch {
          val app = blocklistRepository.observeAppsWithBlockState().first().second
-            .firstOrNull{it.packageName}?:return@launch
+            .firstOrNull{it.packageName == packagename} ?:return@launch
             blocklistRepositary.setAppBlocked(app,block)
         }
     }
