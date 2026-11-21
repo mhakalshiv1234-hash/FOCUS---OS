@@ -33,6 +33,7 @@ import com.focusos.app.domain.AnalyticsUiState
 import com.focusos.app.domain.AppCategory
 import com.focusos.app.domain.DisciplineCalculator
 import com.focusos.app.ui.theme.FocusColors
+import com.focusos.app.ui.theme.FocusColors.BorderSubtle
 
 @Composable
 fun AnalyticsScreen(
