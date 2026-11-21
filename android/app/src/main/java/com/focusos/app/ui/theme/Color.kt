@@ -16,4 +16,5 @@ object FocusColors {
     val RegimentalBrass = Color(0xFFC59B43)
     val NominalGreen = Color(0xFF16A34A)
     val WarningAmber = Color(0xFFD97706)
+val BorderSubtle = HairlineBorder
 }
