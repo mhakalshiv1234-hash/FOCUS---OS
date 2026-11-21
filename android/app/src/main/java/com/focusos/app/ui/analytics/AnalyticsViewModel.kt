@@ -1,6 +1,8 @@
 package com.focusos.app.ui.analytics
 
+import com.focusos.app.domain.AppCategory
 import com.focusos.app.domain.InstalledAppInfo
+import kotlinx.coroutines.flow.first
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -35,9 +37,11 @@ class AnalyticsViewModel(
         }
     }
 
-    fun toggleBlockPackage(app: InstalledAppInfo, block: Boolean) {
+    fun toggleBlockPackage(packageName:String,appName:String,category;AppCategory, block: Boolean) {
         viewModelScope.launch {
-            blocklistRepository.setAppBlocked(app,block)
+         val app = blocklistRepository.observeAppsWithBlockState().first().second
+            .firstOrNull{it.packageName}?:return@launch
+            blocklistRepositary.setAppBlocked(app,block)
         }
     }
 
