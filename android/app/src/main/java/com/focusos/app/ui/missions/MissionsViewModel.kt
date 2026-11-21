@@ -1,5 +1,7 @@
 package com.focusos.app.ui.missions
 
+import kotlinx.coroutines.flow.map
+import com.focusos.app.domain.InstalledAppInfo
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
@@ -9,7 +11,6 @@ import com.focusos.app.data.repository.AppBlocklistRepository
 import com.focusos.app.data.repository.FocusSessionRepository
 import com.focusos.app.data.repository.MissionScheduleRepository
 import com.focusos.app.domain.DailyBlockScheduleItem
-import com.focusos.app.domain.InstalledAppUiModel
 import com.focusos.app.domain.NuclearModePolicy
 import com.focusos.app.domain.ScheduleEvaluation
 import com.focusos.app.domain.ScheduleEvaluator
@@ -29,7 +30,7 @@ import java.time.ZonedDateTime
 data class MissionsUiState(
     val missions: List<StudyMissionItem> = emptyList(),
     val schedules: List<DailyBlockScheduleItem> = emptyList(),
-    val installedApps: List<InstalledAppUiModel> = emptyList(),
+    val installedApps: List<InstalledAppInfo> = emptyList(),
     val scheduleEvaluation: ScheduleEvaluation = ScheduleEvaluation(null, 0, 0L, null),
     val isNuclearLocked: Boolean = false,
     val statusNotice: String? = null
@@ -47,7 +48,7 @@ class MissionsViewModel(
     val uiState: StateFlow<MissionsUiState> = combine(
         missionScheduleRepository.observeMissions(),
         missionScheduleRepository.observeSchedules(),
-        appBlocklistRepository.observeInstalledApps(),
+        appBlocklistRepository.observeAppsWithBlockState().map { it.swcond },
         focusSessionRepository.observeActiveSession(),
         statusNotice
     ) { missions, schedules, apps, session, notice ->
